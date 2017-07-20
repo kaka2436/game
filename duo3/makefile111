@@ -1,0 +1,57 @@
+main:main.o a.o b.o
+	gcc main.o a.o b.o -o main
+main.o:main.c
+	gcc -c main.c -o main.o
+a.o:a.c
+	gcc -c a.c -o a.o
+b.o:b.c
+	gcc -c b.c -o b.o
+#gcc
+#minGW
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#产生什么：依赖什么
+#	指令 怎么产生
+
+
+#  first.c second.c thrid.c
+#	num
+
+num:first.o second.o thrid.o
+	gcc first.o second.o thrid.o -o num
+first.o:first.c
+	gcc -c first.c -o first.o
+second.o:second.c
+	gcc -c second.c -o second.o
+thrid.o:thrid.c
+	gcc -c thrid.c -o thrid.o
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

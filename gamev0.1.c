@@ -2,7 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#define NAME_LEN 200
+#define LIVE 1
+#define DEATH 0 
+
+//
 void menu();
+//
 void gameMenu();
 void registe(char * name , char * passwd);
 void myGets(char * str , int size);
@@ -23,7 +29,6 @@ int goHome()
 	return index;  //返回值为0，表示撤退失败
 }
 
-
 int judge(int * arr,int flag)
 {
 	int i = 0;
@@ -40,12 +45,12 @@ int judge(int * arr,int flag)
 	if(sum == 15 && flag == 0)
 	{
 		printf("电脑取得了胜利\n");
-		return 0;
+		return DEATH;
 	}else if(sum == 15 && flag == 1){
 		printf("恭喜您，取得了战役的胜利\n");
-		return 0;
+		return DEATH;
 	}
-	return 1;
+	return LIVE;
 }
 
 
@@ -62,12 +67,12 @@ void attack(int * arr)
 
 void login(char * name , char * passwd)
 {
-	char newName[20] = {'\0'};
-	char newPasswd[20] = {'\0'};
+	char newName[NAME_LEN] = {'\0'};
+	char newPasswd[NAME_LEN] = {'\0'};
 	printf("请输入用户名:");
-	myGets(newName,20);
+	myGets(newName,NAME_LEN);
 	printf("请输入密码:");
-	myGets(newPasswd,20);
+	myGets(newPasswd,NAME_LEN);
 	
 	if(strcmp(name,newName) != 0 || strcmp(passwd , newPasswd) != 0){
 		printf("登录失败,请重新登录\n");
@@ -81,16 +86,16 @@ void login(char * name , char * passwd)
 
 void registe(char * name , char * passwd)
 {
-	char tmp1[20] = {'\0'};
-	char tmp2[20] = {'\0'};
+	char tmp1[NAME_LEN] = {'\0'};
+	char tmp2[NAME_LEN] = {'\0'};
 	printf("请输入用户名:");
-	myGets(name,20);
+	myGets(name,NAME_LEN);
 	while(1)
 	{
 		printf("请输入密码:");
-		myGets(tmp1,20);
+		myGets(tmp1,NAME_LEN);
 		printf("请重新输入密码:");
-		myGets(tmp2,20);
+		myGets(tmp2,NAME_LEN);
 		if(strcmp(tmp1,tmp2) == 0)
 		{
 			strncpy(passwd,tmp1,strlen(tmp1));
@@ -163,8 +168,8 @@ void gameMenu()
 
 void menu()
 {
-	char name[20] = {'\0'};
-	char passwd[20] = {'\0'};
+	char name[NAME_LEN] = {'\0'};
+	char passwd[NAME_LEN] = {'\0'};
 	while(1)
 	{
 		system("clear");
